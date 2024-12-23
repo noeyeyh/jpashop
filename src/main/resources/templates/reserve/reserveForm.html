@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <form role="form" action="/reserve" method="post">
+        <div class="form-group">
+            <label for="member">예매 회원</label>
+            <select name="memberId" id="member" class="form-control">
+                <option value="">회원 선택</option>
+                <option th:each="member : ${members}"
+                th:value="${member.id}"
+                th:text="${member.name}" />
+            </select>
+        </div>
+        <div
+        class="form-group">
+        <label for="item">영화 제목</label>
+        <select name="itemId" id="item" class="form-control">
+            <option value="">영화 선택</option>
+            <option th:each="item : ${items}" th:value="${item.id}" th:text="${item.name}" />
+        </select>
+</div>
+<div class="form-group">
+<label for="count">예매 좌석수</label>
+<input type="number" name="count" class="form-control" id="count" placeholder="예매 좌석수를 입력하세요">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<br/>
+</div>
+</body>
+</html>
